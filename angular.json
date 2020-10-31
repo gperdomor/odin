@@ -48,6 +48,14 @@
             "jestConfig": "apps/service-tenants/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "options": {
+            "file": "apps/service-tenants/Dockerfile",
+            "tags": ["gperdomor/service-tenants:latest", "ghcr.io/gperdomor/service-tenants:latest"],
+            "platforms": ["linux/amd64", "linux/arm64", "linux/arm/v7", "linux/arm/v6"]
+          }
         }
       }
     },
@@ -97,6 +105,14 @@
           "options": {
             "jestConfig": "apps/service-planner/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "options": {
+            "file": "apps/service-planner/Dockerfile",
+            "tags": ["gperdomor/service-planner:latest", "ghcr.io/gperdomor/service-planner:latest"],
+            "platforms": ["linux/amd64", "linux/arm64", "linux/arm/v7", "linux/arm/v6"]
           }
         }
       }
@@ -148,6 +164,14 @@
             "jestConfig": "apps/service-notifications/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "options": {
+            "file": "apps/service-notifications/Dockerfile",
+            "tags": ["gperdomor/service-notifications:latest", "ghcr.io/gperdomor/service-notifications:latest"],
+            "platforms": ["linux/amd64", "linux/arm64", "linux/arm/v7", "linux/arm/v6"]
+          }
         }
       }
     },
@@ -197,6 +221,14 @@
           "options": {
             "jestConfig": "apps/api-admin/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "options": {
+            "file": "apps/api-admin/Dockerfile",
+            "tags": ["gperdomor/api-admin:latest", "ghcr.io/gperdomor/api-admin:latest"],
+            "platforms": ["linux/amd64", "linux/arm64", "linux/arm/v7", "linux/arm/v6"]
           }
         }
       }
