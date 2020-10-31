@@ -68,3 +68,5 @@ jobs:
 
       - name: Running Docker build
         run: npx nx affected --target=docker --base=remotes/origin/main
+        env:
+          INPUT_PUSH: true
