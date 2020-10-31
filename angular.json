@@ -50,6 +50,56 @@
           }
         }
       }
+    },
+    "service-planner": {
+      "root": "apps/service-planner",
+      "sourceRoot": "apps/service-planner/src",
+      "projectType": "application",
+      "prefix": "service-planner",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/service-planner",
+            "main": "apps/service-planner/src/main.ts",
+            "tsConfig": "apps/service-planner/tsconfig.app.json",
+            "assets": ["apps/service-planner/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/service-planner/src/environments/environment.ts",
+                  "with": "apps/service-planner/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "service-planner:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/service-planner/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/service-planner/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
