@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -37,13 +39,13 @@ jobs:
         run: npm ci --cache ~/.npm --prefer-offline
 
       - name: Running tests
-        run: npx nx affected --target=test
+        run: npx nx affected --target=test --base=remotes/origin/main
 
       - name: Running lint
-        run: npx nx affected --target=lint
+        run: npx nx affected --target=lint --base=remotes/origin/main
 
       - name: Running build
-        run: npx nx affected --target=build --prod
+        run: npx nx affected --target=build --base=remotes/origin/main --prod
 
       # - name: Running Docker build
       #   run: npx nx affected --target=docker
