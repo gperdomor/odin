@@ -26,5 +26,18 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "service-tenants": {
+      "tags": []
+    },
+    "service-planner": {
+      "tags": []
+    },
+    "service-notifications": {
+      "tags": []
+    },
+    "api-admin": {
+      "tags": []
+    }
+  }
 }
