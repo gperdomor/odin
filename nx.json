@@ -35,6 +35,9 @@
     },
     "service-notifications": {
       "tags": []
+    },
+    "api-admin": {
+      "tags": []
     }
   }
 }
