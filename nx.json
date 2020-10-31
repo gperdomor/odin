@@ -26,5 +26,9 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "service-tenants": {
+      "tags": []
+    }
+  }
 }
