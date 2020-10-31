@@ -1,0 +1,49 @@
+name: Node.js CI
+
+on: push
+
+# on:
+#   push:
+#     branches: [$default-branch]
+#   pull_request:
+#     branches: [$default-branch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.15.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            ${{ runner.os }}-
+
+      - name: Installing dependencies
+        run: npm ci --cache ~/.npm --prefer-offline
+
+      - name: Running tests
+        run: npx nx affected --target=test
+
+      - name: Running lint
+        run: npx nx affected --target=lint
+
+      - name: Running build
+        run: npx nx affected --target=build --prod
+
+      # - name: Running Docker build
+      #   run: npx nx affected --target=docker

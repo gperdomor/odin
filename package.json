@@ -60,6 +60,7 @@
     "@nrwl/node": "10.3.1",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "10.3.1",
+    "@nx-tools/nx-docker": "1.0.0-alpha.2",
     "@types/express": "4.17.8",
     "@types/jest": "26.0.15",
     "@types/joi": "14.3.4",
