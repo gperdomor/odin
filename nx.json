@@ -32,6 +32,9 @@
     },
     "service-planner": {
       "tags": []
+    },
+    "service-notifications": {
+      "tags": []
     }
   }
 }

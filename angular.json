@@ -100,6 +100,56 @@
           }
         }
       }
+    },
+    "service-notifications": {
+      "root": "apps/service-notifications",
+      "sourceRoot": "apps/service-notifications/src",
+      "projectType": "application",
+      "prefix": "service-notifications",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/service-notifications",
+            "main": "apps/service-notifications/src/main.ts",
+            "tsConfig": "apps/service-notifications/tsconfig.app.json",
+            "assets": ["apps/service-notifications/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/service-notifications/src/environments/environment.ts",
+                  "with": "apps/service-notifications/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "service-notifications:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/service-notifications/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/service-notifications/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
